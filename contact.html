@@ -4,63 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Rob van Hagen</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <style>
-        .contact-form { background: white; padding: 25px; border-radius: 8px; }
-        .contact-form input, .contact-form select, .contact-form textarea {
-            width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; font-size: 16px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">CAPT. <span>ROB</span></div>
+            <a href="index.html" class="logo">CAPT. <span>ROB</span></a>
             <div class="menu">
                 <a href="index.html">Home</a>
                 <a href="experience.html">Experience</a>
+                <a href="management.html">Management</a>
+                <a href="qualifications.html">Qualifications</a>
+                <a href="objectives.html">Bio</a>
                 <a href="contact.html" class="active">Contact</a>
             </div>
         </div>
     </nav>
 
-    <div class="container" style="text-align:center;">
-        <h2>Command & CV Inquiry</h2>
-        <form id="commandForm" action="https://formspree.io/f/rob_van_hagen@hotmail.com" method="POST" class="contact-form">
-            <input type="text" name="name" id="userName" placeholder="Full Name" required>
-            <input type="text" name="vessel" id="vesselName" placeholder="Vessel Name / GT" required>
-            <select name="type" id="inquiryType">
-                <option value="Permanent Command">Permanent Command</option>
-                <option value="Full CV Request">Full CV Request</option>
-            </select>
-            <textarea name="message" id="userMessage" rows="4" placeholder="Message..." required></textarea>
+    <div class="container">
+        <div class="card">
+            <h2>Command & CV Inquiry</h2>
+            <p style="margin-bottom: 20px; color: #666;">Direct notification sent to Capt. Rob's bridge station.</p>
+            
+            <form id="telegramForm">
+                <input type="text" id="name" placeholder="Your Name / Company" required style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ddd; border-radius:4px;">
+                
+                <input type="email" id="email" placeholder="Your Email Address" required style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ddd; border-radius:4px;">
+                
+                <select id="requestType" style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ddd; border-radius:4px;">
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Full CV Request">Full CV Request</option>
+                    <option value="Urgent Manning/Command">Urgent Manning/Command</option>
+                </select>
 
-            <div style="display: grid; gap: 10px; margin-top: 20px;">
-                <button type="submit" class="btn-primary">Submit to Email</button>
-                <button type="button" onclick="sendToWhatsApp()" class="btn-secondary" style="color:#25D366; border-color:#25D366;">WhatsApp</button>
-                <button type="button" onclick="sendToTelegram()" class="btn-telegram">Telegram Bot</button>
-            </div>
-        </form>
+                <textarea id="message" placeholder="Message or Vessel Details..." rows="4" style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ddd; border-radius:4px;"></textarea>
+                
+                <button type="button" onclick="sendTelegram()" class="btn-primary" style="width:100%; border:none; cursor:pointer;">Send to Telegram</button>
+            </form>
+            
+            <div id="status" style="margin-top:15px; text-align:center; font-weight:bold;"></div>
+        </div>
     </div>
 
     <script>
-        function sendToWhatsApp() {
-            const name = document.getElementById('userName').value;
-            const vessel = document.getElementById('vesselName').value;
-            const msg = document.getElementById('userMessage').value;
-            const phoneNumber = "61434993224"; 
-            const text = `*NEW CV REQUEST*%0A*Name:* ${name}%0A*Vessel:* ${vessel}%0A*Message:* ${msg}`;
-            window.open(`https://wa.me/${phoneNumber}?text=${text}`, "_blank");
-        }
+        function sendTelegram() {
+            // ROB: PASTE YOUR DETAILS HERE
+            const botToken = "PASTE_YOUR_BOT_TOKEN_HERE"; 
+            const chatId = "PASTE_YOUR_CHAT_ID_HERE";
 
-        function sendToTelegram() {
-            const name = document.getElementById('userName').value;
-            const vessel = document.getElementById('vesselName').value;
-            const botToken = "8361987343:AAHtrg20A-86k6fdf6KnBzkKIakYB5bUxpk"; 
-            const chatId = "8187670531";
-            const text = `🚢 CV Request: ${name} for ${vessel}`;
-            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(text)}`;
-            fetch(url).then(() => alert("Sent to Telegram!"));
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const type = document.getElementById('requestType').value;
+            const msg = document.getElementById('message').value;
+
+            const text = `🚢 *NEW INQUIRY*%0A*From:* ${name}%0A*Email:* ${email}%0A*Type:* ${type}%0A*Message:* ${msg}`;
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${text}&parse_mode=Markdown`;
+
+            fetch(url).then(response => {
+                if(response.ok) {
+                    document.getElementById('status').innerText = "Message Sent Successfully!";
+                    document.getElementById('status').style.color = "green";
+                    document.getElementById('telegramForm').reset();
+                } else {
+                    document.getElementById('status').innerText = "Error sending message.";
+                    document.getElementById('status').style.color = "red";
+                }
+            });
         }
     </script>
 </body>
