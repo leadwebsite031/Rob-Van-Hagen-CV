@@ -2,17 +2,139 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Rob van Hagen</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <style>
+        .contact-form { max-width: 600px; margin: 0 auto; text-align: left; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .contact-form label { font-weight: bold; color: #0a192f; display: block; margin-top: 15px; }
+        .contact-form input, .contact-form select, .contact-form textarea {
+            width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit;
+        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+        .btn-telegram { background: #0088cc; color: white; border: none; padding: 12px 25px; border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; }
+        .btn-telegram:hover { background: #0077b5; }
+    </style>
 </head>
 <body>
-    <nav><div class="nav-container"><div class="logo">CAPT. <span>ROB</span></div><div class="menu"><a href="index.html">Home</a><a href="experience.html">Experience</a><a href="management.html">Management</a><a href="qualifications.html">Qualifications</a><a href="contact.html" class="active">Contact</a></div></div></nav>
-    <div class="container" style="text-align:center;">
-        <h2>Contact the Bridge</h2>
-        <div style="margin-top:40px;">
-            <a href="tel:+33612345678" class="btn-primary">📞 Call Capt. Rob</a>
-            <a href="mailto:rob_van_hagen@hotmail.com" class="btn-secondary">✉️ Email</a>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">CAPT. <span>ROB</span></div>
+            <div class="menu">
+                <a href="index.html">Home</a>
+                <a href="experience.html">Experience</a>
+                <a href="management.html">Management</a>
+                <a href="qualifications.html">Qualifications</a>
+                <a href="contact.html" class="active">Contact</a>
+            </div>
         </div>
+    </nav>
+
+    <div class="container" style="text-align:center;">
+        <h2>Command & Relief Inquiry</h2>
+        <p>Please provide vessel details for a formal proposal or CV request.</p>
+
+        <form id="commandForm" action="https://formspree.io/f/rob_van_hagen@hotmail.com" method="POST" class="contact-form">
+            <div class="form-row">
+                <div>
+                    <label>Full Name</label>
+                    <input type="text" name="name" id="userName" placeholder="Contact Person" required>
+                </div>
+                <div>
+                    <label>Vessel Name / GT</label>
+                    <input type="text" name="vessel" id="vesselName" placeholder="e.g. M/Y GO / 1950GT" required>
+                </div>
+            </div>
+
+            <label>Inquiry Type</label>
+            <select name="type" id="inquiryType">
+                <option value="Permanent Command">Permanent Command</option>
+                <option value="Relief Captain">Relief Captain</option>
+                <option value="Refit Management">Refit Management</option>
+                <option value="Full CV Request">Full CV Request</option>
+            </select>
+
+            <label>Message</label>
+            <textarea name="message" id="userMessage" rows="5" placeholder="Details regarding dates, location, and requirements..." required></textarea>
+
+            <div style="margin-top: 25px; display: grid; gap: 10px;">
+                <button type="submit" class="btn-primary" style="width:100%; border:none; cursor:pointer; font-size:1rem;">
+                    Submit to Email
+                </button>
+                
+                <button type="button" onclick="sendToWhatsApp()" class="btn-secondary" style="width:100%; border:2px solid #25D366; color:#25D366; cursor:pointer; font-size:1rem;">
+                    Send via WhatsApp
+                </button>
+
+                <button type="button" onclick="sendToTelegram()" class="btn-telegram">
+                    Send to Telegram Bot
+                </button>
+            </div>
+        </form>
     </div>
+
+    <footer>
+        <p>© 2026 Rob van Hagen | Professional Yacht Captain Portfolio</p>
+    </footer>
+
+    <script>
+        // WHATSAPP FUNCTION
+        function sendToWhatsApp() {
+            const name = document.getElementById('userName').value;
+            const vessel = document.getElementById('vesselName').value;
+            const type = document.getElementById('inquiryType').value;
+            const msg = document.getElementById('userMessage').value;
+
+            if(!name || !vessel || !msg) {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+            const phoneNumber = "61434993224"; 
+            const text = `*NEW COMMAND INQUIRY*%0A%0A` +
+                         `*Name:* ${name}%0A` +
+                         `*Vessel:* ${vessel}%0A` +
+                         `*Type:* ${type}%0A` +
+                         `*Message:* ${msg}`;
+
+            window.open(`https://wa.me/${phoneNumber}?text=${text}`, "_blank");
+        }
+
+        // TELEGRAM BOT FUNCTION
+        function sendToTelegram() {
+            const name = document.getElementById('userName').value;
+            const vessel = document.getElementById('vesselName').value;
+            const type = document.getElementById('inquiryType').value;
+            const msg = document.getElementById('userMessage').value;
+
+            if(!name || !vessel || !msg) {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+            // --- BOT CONFIGURATION ---
+            const botToken = "8361987343:AAHtrg20A-86k6fdf6KnBzkKIakYB5bUxpk"; // Get from @BotFather
+            const chatId = "8187670531";     // Get from @userinfobot
+            
+            const telegramText = `🚢 *NEW CV REQUEST*%0A%0A` +
+                                `*From:* ${name}%0A` +
+                                `*Vessel:* ${vessel}%0A` +
+                                `*Inquiry:* ${type}%0A` +
+                                `*Message:* ${msg}`;
+
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${telegramText}&parse_mode=Markdown`;
+
+            fetch(url)
+                .then(response => {
+                    if(response.ok) {
+                        alert("Inquiry sent successfully to Telegram!");
+                    } else {
+                        alert("Error sending to Telegram. Ensure Bot Token and Chat ID are correct.");
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
 </body>
 </html>
