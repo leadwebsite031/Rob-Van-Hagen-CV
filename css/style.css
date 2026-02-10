@@ -9,16 +9,32 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f7f6;
-    color: #333;
 }
 
-/* NAV SYSTEM - Identical for all devices */
+/* BACKGROUND IMAGE FIX */
+.hero {
+    background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.7)), url('../yacht-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keeps image steady on mobile */
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+/* NAVIGATION - ALWAYS VISIBLE */
 nav {
     background: var(--navy);
-    padding: 15px 0;
+    padding: 10px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
+    width: 100%;
+    border-bottom: 2px solid var(--gold);
 }
 
 .nav-container {
@@ -27,44 +43,42 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 15px;
 }
 
-.logo { font-size: 1.5rem; font-weight: bold; color: white; text-decoration: none; }
+.logo { font-size: 1.2rem; font-weight: bold; color: white; text-decoration: none; min-width: 100px; }
 .logo span { color: var(--gold); }
 
-.menu { display: flex; gap: 15px; }
+/* THE MENU FIX: No hidden states, always visible */
+.menu { 
+    display: flex; 
+    gap: 15px; 
+    overflow-x: auto; /* Allows sliding if tabs are too wide for phone */
+    white-space: nowrap;
+    padding-bottom: 5px;
+}
+
 .menu a {
     color: #8892b0;
     text-decoration: none;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: bold;
     text-transform: uppercase;
-}
-.menu a.active { color: var(--gold); border-bottom: 2px solid var(--gold); }
-
-/* HERO IMAGE FIX */
-.hero {
-    background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.7)), url('../yacht-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-    padding: 20px;
+    padding: 5px 10px;
+    transition: 0.3s;
 }
 
-/* MOBILE FIX */
-@media (max-width: 768px) {
-    .nav-container { flex-direction: column; gap: 10px; }
-    .menu { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; gap: 5px; }
-    .menu a { font-size: 0.65rem; background: rgba(255,255,255,0.1); padding: 10px 2px; border-radius: 4px; text-align: center; }
-    .hero h1 { font-size: 1.8rem; }
+.menu a.active { 
+    color: var(--gold); 
+    border-bottom: 2px solid var(--gold); 
 }
 
-.container { max-width: 1100px; margin: 20px auto; padding: 0 20px; }
-.card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-top: 5px solid var(--gold); }
+/* Ensure images and cards look good on phone */
+.container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+.card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+@media (max-width: 600px) {
+    .nav-container { flex-direction: column; align-items: flex-start; }
+    .menu { width: 100%; margin-top: 10px; }
+    .logo { font-size: 1rem; }
+}
