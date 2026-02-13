@@ -10,7 +10,7 @@
         :root {
             --royal-blue: #001a35;
             --accent-gold: #c5a059;
-            --glass-navy: rgba(0, 8, 20, 0.92);
+            --glass-navy: rgba(0, 8, 20, 0.88);
             --border: rgba(197, 160, 89, 0.3);
             --white: #ffffff;
         }
@@ -29,15 +29,14 @@
         .vessel-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100vh;
-            /* Using your uploaded yacht image for the main atmosphere */
-            background: linear-gradient(rgba(0, 8, 20, 0.7), rgba(0, 8, 20, 0.7)), 
-                        url('e819aca1-5bd2-43fc-a7fe-72a1390c8635.jfif');
+            background: linear-gradient(rgba(0, 8, 20, 0.75), rgba(0, 8, 20, 0.75)), 
+                        url('b5025056-99a7-4bb9-ae0d-2aa3785a9e65.jfif');
             background-size: cover;
             background-position: center;
             z-index: -2;
         }
 
-        /* NAVIGATION */
+        /* NAVIGATION & LOGO */
         nav {
             height: 90px;
             display: flex;
@@ -60,14 +59,14 @@
         }
 
         .logo-svg {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             fill: var(--accent-gold);
         }
 
         .logo-text {
             font-family: 'Cinzel', serif;
-            font-size: 1rem;
+            font-size: 1.1rem;
             letter-spacing: 2px;
             color: var(--accent-gold);
             font-weight: 700;
@@ -78,7 +77,7 @@
         .nav-links a {
             text-decoration: none;
             color: var(--white);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-left: 30px;
@@ -89,7 +88,7 @@
 
         .mobile-toggle { display: none; color: var(--accent-gold); font-size: 1.5rem; cursor: pointer; }
 
-        /* HERO */
+        /* HERO SECTION */
         .hero {
             height: 100vh;
             display: flex;
@@ -103,95 +102,101 @@
         .hero h1 {
             font-family: 'Cinzel', serif;
             font-size: clamp(2.5rem, 8vw, 5rem);
-            letter-spacing: 12px;
+            letter-spacing: 15px;
             color: var(--accent-gold);
             margin-bottom: 10px;
             text-transform: uppercase;
         }
 
-        /* SECTIONS & GLASS PANELS */
-        section { padding: 100px 5% 60px; }
+        /* GLASS PANELS */
+        section { padding: 100px 5% 40px; }
 
         .glass-panel {
             background: var(--glass-navy);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            padding: clamp(30px, 5vw, 60px);
+            padding: clamp(30px, 5vw, 80px);
             width: 100%;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             border: 1px solid var(--border);
-            border-radius: 4px;
+            border-radius: 2px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
         }
 
         h2 {
             font-family: 'Cinzel', serif;
             font-size: clamp(1.5rem, 4vw, 2.5rem);
             color: var(--accent-gold);
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             text-align: center;
-            letter-spacing: 4px;
+            letter-spacing: 6px;
         }
 
-        /* HARD-CODED ROLLING GALLERY */
+        /* ROLLING GALLERY BAR */
         .rolling-bar {
             width: 100%;
             height: 350px;
             overflow: hidden;
-            background: #000;
+            background: rgba(0,0,0,0.3);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
-            margin: 40px 0;
+            position: relative;
+            margin: 60px 0;
+            backdrop-filter: blur(5px);
         }
 
         .rolling-track {
             display: flex;
-            /* Width calculation based on 10 images at 500px each */
-            width: calc(500px * 10); 
-            animation: slideScroll 40s linear infinite;
+            width: calc(450px * 12); 
+            animation: slideScroll 35s linear infinite;
         }
 
         .rolling-track:hover { animation-play-state: paused; }
 
         .rolling-track img {
-            width: 500px;
+            width: 450px;
             height: 350px;
             object-fit: cover;
-            border-right: 1px solid var(--royal-blue);
-            transition: 0.5s filter;
-            filter: brightness(0.8);
+            filter: brightness(70%) sepia(20%);
+            transition: 0.5s;
+            border-right: 1px solid var(--border);
         }
 
-        .rolling-track img:hover { filter: brightness(1); }
+        .rolling-track img:hover { filter: brightness(100%) sepia(0%); }
 
         @keyframes slideScroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-500px * 5)); } /* Scrolls half the track for seamless loop */
+            100% { transform: translateX(calc(-450px * 6)); }
         }
 
         /* GRID CONTENT */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
-        .info-item { padding: 20px; border: 1px solid rgba(197, 160, 89, 0.1); }
         .info-item h3 {
             font-family: 'Cinzel', serif;
             color: var(--accent-gold);
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
             letter-spacing: 2px;
         }
+
+        .info-item p { font-size: 0.95rem; opacity: 0.8; font-weight: 300; }
 
         /* CALCULATOR */
         .calc-box {
             background: rgba(197, 160, 89, 0.05);
-            padding: 40px 20px;
+            padding: 40px;
             border: 1px solid var(--accent-gold);
             text-align: center;
-            margin-top: 40px;
+            margin-top: 60px;
         }
 
         .calc-input {
@@ -199,81 +204,88 @@
             border: none;
             border-bottom: 2px solid var(--accent-gold);
             color: var(--white);
-            font-size: 2rem;
-            width: 120px;
+            font-size: 2.5rem;
+            width: 150px;
             text-align: center;
             outline: none;
             font-family: 'Cinzel', serif;
         }
 
         .total-price {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(2.5rem, 6vw, 4rem);
             color: var(--accent-gold);
             font-family: 'Cinzel', serif;
-            margin: 15px 0;
+            margin: 20px 0;
         }
 
         .btn-luxury {
             display: inline-block;
-            padding: 18px 50px;
+            padding: 20px 60px;
             border: 1px solid var(--accent-gold);
             color: var(--accent-gold);
             text-decoration: none;
             font-weight: 700;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            transition: 0.4s;
+            transition: 0.5s;
+            margin-top: 20px;
         }
 
         .btn-luxury:hover {
             background: var(--accent-gold);
             color: #000;
+            box-shadow: 0 0 40px rgba(197, 160, 89, 0.4);
         }
 
-        /* FOOTER */
+        /* FOOTER & SOCIALS */
         footer {
             padding: 60px 5% 40px;
             text-align: center;
-            background: #000814;
+            background: #00050a;
             border-top: 1px solid var(--border);
         }
 
-        .social-icons {
-            margin: 25px 0;
+        .social-links {
+            margin: 20px 0 30px;
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 25px;
         }
 
-        .social-icons a {
+        .social-links a {
             color: var(--accent-gold);
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             transition: 0.3s;
+            opacity: 0.8;
         }
 
-        .social-icons a:hover { transform: translateY(-5px); opacity: 0.8; }
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
 
-        /* MOBILE ADJUSTMENTS */
         @media (max-width: 900px) {
-            .mobile-toggle { display: block; }
             .nav-links {
-                display: none;
+                display: none; 
                 position: absolute;
                 top: 90px; left: 0; width: 100%;
                 background: var(--glass-navy);
                 flex-direction: column;
-                padding: 30px 0;
+                padding: 40px 0;
+                text-align: center;
                 border-bottom: 1px solid var(--border);
             }
             .nav-links.active { display: flex; }
-            .nav-links a { margin: 15px 0; margin-left: 0; font-size: 0.9rem; }
-            
-            .rolling-bar { height: 200px; }
-            .rolling-track img { width: 300px; height: 200px; }
+            .nav-links a { margin: 15px 0; font-size: 1rem; margin-left: 0; }
+            .mobile-toggle { display: block; }
+            .glass-panel { padding: 40px 20px; }
+            .rolling-bar { height: 250px; }
+            .rolling-track img { width: 320px; height: 250px; }
             @keyframes slideScroll {
                 0% { transform: translateX(0); }
-                100% { transform: translateX(calc(-300px * 5)); }
+                100% { transform: translateX(calc(-320px * 6)); }
             }
+            .calc-input { font-size: 1.8rem; width: 100px; }
         }
     </style>
 </head>
@@ -284,42 +296,90 @@
     <nav>
         <a href="#" class="logo-group">
             <svg class="logo-svg" viewBox="0 0 100 100">
-                <path d="M50 5 L90 85 L50 70 L10 85 Z" fill="none" stroke="currentColor" stroke-width="3"/>
-                <circle cx="50" cy="45" r="8" fill="currentColor"/>
+                <path d="M50 5 L90 85 L50 70 L10 85 Z" fill="none" stroke="currentColor" stroke-width="4"/>
+                <circle cx="50" cy="45" r="10" fill="currentColor"/>
             </svg>
-            <div class="logo-text">CLEAR WATER<br><span style="font-size: 0.6rem; opacity: 0.6;">YACHT SOLUTIONS</span></div>
+            <div class="logo-text">CLEAR WATER<br><span style="font-size: 0.7rem; opacity: 0.7;">YACHT SOLUTIONS</span></div>
         </a>
         <div class="mobile-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#about" onclick="toggleMenu()">About</a></li>
-            <li><a href="#maintenance" onclick="toggleMenu()">Maintenance</a></li>
-            <li><a href="#management" onclick="toggleMenu()">Management</a></li>
+            <li><a href="#about" onclick="toggleMenu()">About us</a></li>
+            <li><a href="#maintenance" onclick="toggleMenu()">Maintenance & Packages</a></li>
+            <li><a href="#management" onclick="toggleMenu()">Skipping & Management</a></li>
             <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
         </ul>
     </nav>
 
     <div class="hero">
-        <p style="letter-spacing: 5px; font-size: 0.7rem; color: var(--accent-gold); margin-bottom: 15px;">PREMIUM MARITIME OVERSIGHT</p>
+        <p style="letter-spacing: 8px; font-size: 0.8rem; color: var(--accent-gold); margin-bottom: 20px;">ESTABLISHED IN MARITIME EXCELLENCE</p>
         <h1>CLEAR WATER</h1>
-        <div style="width: 60px; height: 1px; background: var(--accent-gold); margin: 15px auto;"></div>
-        <p style="font-size: 1.1rem; font-weight: 300; letter-spacing: 3px; opacity: 0.8;">Sydney & International Waters</p>
+        <div style="width: 100px; height: 1px; background: var(--accent-gold); margin: 20px auto;"></div>
+        <p style="font-size: 1.2rem; font-weight: 300; letter-spacing: 4px; opacity: 0.8;">Vessel Oversight & Technical Solutions</p>
     </div>
 
     <section id="about">
         <div class="glass-panel">
-            <h2>The Gold Standard</h2>
+            <h2>The Fleet Standard</h2>
             <div class="info-grid">
                 <div class="info-item">
-                    <h3>Technical Audits</h3>
-                    <p>Comprehensive mechanical and systems oversight ensuring peak performance across the fleet.</p>
+                    <h3>Technical Mastery</h3>
+                    <p>Our team provides deep-system mechanical audits and fluid analysis to ensure zero-fail ocean operations.</p>
                 </div>
                 <div class="info-item">
-                    <h3>Surface Excellence</h3>
-                    <p>Maintaining structural and aesthetic integrity through specialized preservation techniques.</p>
+                    <h3>Aesthetic Integrity</h3>
+                    <p>From gelcoat preservation to high-lustre stainless polishing, we maintain the "Showroom" condition of your asset.</p>
                 </div>
                 <div class="info-item">
-                    <h3>Asset Protection</h3>
-                    <p>Dedicated management designed to maximize the longevity and value of your vessel.</p>
+                    <h3>Strategic Logistics</h3>
+                    <p>We handle the complexities of vessel relocation, berth management, and seasonal transitions globally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="maintenance">
+        <div class="glass-panel">
+            <h2>Luxury Maintenance</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>01. Exterior Detail</h3>
+                    <p>Weekly washdowns, teak conditioning, and brightwork polishing to repel salt and oxidation.</p>
+                </div>
+                <div class="info-item">
+                    <h3>02. Engine Room</h3>
+                    <p>Complete wipe-down, leak detection, and scheduled mechanical cycle testing for all sub-systems.</p>
+                </div>
+                <div class="info-item">
+                    <h3>03. Hull Management</h3>
+                    <p>Diver-assisted growth removal and running gear inspection to maintain fuel efficiency and speed.</p>
+                </div>
+                <div class="info-item">
+                    <h3>04. Interior Care</h3>
+                    <p>Climate control monitoring, upholstery protection, and high-end surface sanitation.</p>
+                </div>
+            </div>
+
+            <div class="calc-box">
+                <h3 style="font-family: 'Cinzel'; letter-spacing: 3px; margin-bottom: 20px;">VALUATION CALCULATOR</h3>
+                <p style="font-size: 0.8rem; margin-bottom: 20px; opacity: 0.6;">ENTER VESSEL LENGTH (FEET)</p>
+                <input type="number" id="vLength" class="calc-input" placeholder="00" oninput="doCalc()">
+                <div class="total-price" id="resPrice">$0</div>
+                <p style="letter-spacing: 2px; font-size: 0.7rem; color: var(--accent-gold);">FLAT RATE: $4.00 USD PER FOOT</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="management">
+        <div class="glass-panel">
+            <h2>Vessel Management</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>Certified Skipping</h3>
+                    <p>Professional delivery captains for coastal and offshore transits. Full passage planning and weather routing included.</p>
+                </div>
+                <div class="info-item">
+                    <h3>Owner Liaison</h3>
+                    <p>We act as your technical representative for shipyard periods, surveys, and third-party contractor management.</p>
                 </div>
             </div>
         </div>
@@ -327,83 +387,45 @@
 
     <div class="rolling-bar">
         <div class="rolling-track">
-            <img src="b5025056-99a7-4bb9-ae0d-2aa3785a9e65.jfif" alt="Quantum Yacht">
-            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Shadow Yacht">
-            <img src="239e9ecd-31be-43ef-873f-0708a0a96a4a.jfif" alt="Harbour Bridge View">
-            <img src="e819aca1-5bd2-43fc-a7fe-72a1390c8635.jfif" alt="Opera House Sunset">
-            <img src="10e80e1e-f4ff-4237-9d9d-928e290d04ff.jfif" alt="Bridge Night">
-            <img src="b5025056-99a7-4bb9-ae0d-2aa3785a9e65.jfif" alt="Quantum Yacht">
-            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Shadow Yacht">
-            <img src="239e9ecd-31be-43ef-873f-0708a0a96a4a.jfif" alt="Harbour Bridge View">
-            <img src="e819aca1-5bd2-43fc-a7fe-72a1390c8635.jfif" alt="Opera House Sunset">
-            <img src="10e80e1e-f4ff-4237-9d9d-928e290d04ff.jfif" alt="Bridge Night">
+            <img src="b5025056-99a7-4bb9-ae0d-2aa3785a9e65.jfif" alt="Vessel Image">
+            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Vessel Image">
+            <img src="239e9ecd-31be-43ef-873f-0708a0a96a4a.jfif" alt="Vessel Image">
+            <img src="e819aca1-5bd2-43fc-a7fe-72a1390c8635.jfif" alt="Vessel Image">
+            <img src="10e80e1e-f4ff-4237-9d9d-928e290d04ff.jfif" alt="Vessel Image">
+            <img src="b5025056-99a7-4bb9-ae0d-2aa3785a9e65.jfif" alt="Vessel Image">
+            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Vessel Image">
+            <img src="239e9ecd-31be-43ef-873f-0708a0a96a4a.jfif" alt="Vessel Image">
+            <img src="e819aca1-5bd2-43fc-a7fe-72a1390c8635.jfif" alt="Vessel Image">
+            <img src="10e80e1e-f4ff-4237-9d9d-928e290d04ff.jfif" alt="Vessel Image">
+            <img src="b5025056-99a7-4bb9-ae0d-2aa3785a9e65.jfif" alt="Vessel Image">
+            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Vessel Image">
         </div>
     </div>
 
-    <section id="maintenance">
-        <div class="glass-panel">
-            <h2>Maintenance Packages</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <h3>Wash & Polish</h3>
-                    <p>Detailed exterior maintenance to combat environmental exposure and salt damage.</p>
-                </div>
-                <div class="info-item">
-                    <h3>Internal Systems</h3>
-                    <p>Monitoring of HVAC, plumbing, and electrical arrays to ensure 24/7 readiness.</p>
-                </div>
-            </div>
-
-            <div class="calc-box">
-                <h3 style="font-family: 'Cinzel'; letter-spacing: 2px; margin-bottom: 10px;">VESSEL CALCULATOR</h3>
-                <p style="font-size: 0.7rem; margin-bottom: 20px; opacity: 0.6;">ENTER LENGTH IN FEET</p>
-                <input type="number" id="vLength" class="calc-input" placeholder="00" oninput="doCalc()">
-                <div class="total-price" id="resPrice">$0</div>
-                <p style="letter-spacing: 1px; font-size: 0.65rem; color: var(--accent-gold);">RATE: $4.00 PER FOOT</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="management">
-        <div class="glass-panel">
-            <h2>Management & Skippering</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <h3>Global Relocation</h3>
-                    <p>Professional delivery services for coastal and international passage planning.</p>
-                </div>
-                <div class="info-item">
-                    <h3>Project Oversight</h3>
-                    <p>Management of dry-dock periods and third-party contractors for major refits.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="contact">
         <div style="text-align: center;">
-            <h2 style="margin-bottom: 20px;">Contact Operations</h2>
-            <p style="max-width: 500px; margin: 0 auto 40px; opacity: 0.7;">Secure your vessel with premium oversight. Available for consultation on bespoke contracts.</p>
-            <a href="https://wa.me/61434993224" class="btn-luxury">Send Inquiry</a>
+            <h2 style="margin-bottom: 20px;">Secure Your Vessel</h2>
+            <p style="max-width: 600px; margin: 0 auto 40px; opacity: 0.7;">Bespoke maintenance packages and management contracts discussed upon request.</p>
+            <a href="https://wa.me/61434993224" class="btn-luxury">Initiate Command</a>
         </div>
     </section>
 
     <footer>
-        <div class="logo-text">CLEAR WATER YACHT SOLUTIONS</div>
+        <div class="logo-text" style="margin-bottom: 10px;">CLEAR WATER YACHT SOLUTIONS</div>
         
-        <div class="social-icons">
-            <a href="https://facebook.com/yourprofile" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://instagram.com/yourprofile" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <div class="social-links">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
 
-        <p style="font-size: 0.6rem; opacity: 0.4; letter-spacing: 1px;">© 2026 CLEAR WATER YACHT SOLUTIONS. ALL RIGHTS RESERVED.</p>
+        <p style="font-size: 0.7rem; opacity: 0.4; letter-spacing: 2px;">© 2026 PRECISION MARITIME OVERSIGHT. ALL RIGHTS RESERVED.</p>
     </footer>
 
     <script>
         function doCalc() {
-            const length = document.getElementById('vLength').value;
-            const price = length * 4;
-            document.getElementById('resPrice').innerText = '$' + price.toLocaleString();
+            const l = document.getElementById('vLength').value;
+            const p = l * 4;
+            document.getElementById('resPrice').innerText = '$' + p.toLocaleString();
         }
 
         function toggleMenu() {
