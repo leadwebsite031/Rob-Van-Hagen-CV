@@ -182,38 +182,6 @@
             margin: 20px 0;
         }
 
-        /* ROLLING GALLERY BAR */
-        .rolling-bar {
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
-            background: #000;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            position: relative;
-        }
-
-        .rolling-track {
-            display: flex;
-            width: calc(400px * 12);
-            animation: slideScroll 40s linear infinite;
-        }
-
-        .rolling-track img {
-            width: 400px;
-            height: 300px;
-            object-fit: cover;
-            filter: brightness(60%) contrast(110%);
-            transition: 0.5s;
-        }
-
-        .rolling-track img:hover { filter: brightness(100%); }
-
-        @keyframes slideScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-400px * 6)); }
-        }
-
         /* LUXURY BUTTON */
         .btn-luxury {
             display: inline-block;
@@ -244,7 +212,7 @@
         /* MOBILE OPTIMIZATION */
         @media (max-width: 900px) {
             .nav-links {
-                display: none; /* Hide for mobile JS menu */
+                display: none; 
                 position: absolute;
                 top: 90px; left: 0; width: 100%;
                 background: var(--glass-navy);
@@ -254,7 +222,7 @@
                 border-bottom: 1px solid var(--border);
             }
             .nav-links.active { display: flex; }
-            .nav-links a { margin: 15px 0; font-size: 1rem; }
+            .nav-links a { margin: 15px 0; font-size: 1rem; margin-left: 0; }
             .mobile-toggle { display: block; }
             .glass-panel { padding: 40px 20px; }
         }
@@ -277,6 +245,7 @@
             <li><a href="#about">About us </a></li>
             <li><a href="#maintenance">Maintenance & Packages</a></li>
             <li><a href="#management">Skipping & Management</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -355,19 +324,6 @@
             </div>
         </div>
     </section>
-
-    <div class="rolling-bar">
-        <div class="rolling-track">
-            <img src="Gallery1.jpeg" alt="Yacht 1">
-            <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=800&q=80" alt="Yacht 2">
-            <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80" alt="Yacht 3">
-            <img src="https://images.unsplash.com/photo-1605281317010-fe5ffe798156?auto=format&fit=crop&w=800&q=80" alt="Yacht 4">
-            <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=800&q=80" alt="Yacht 5">
-            <img src="https://images.unsplash.com/photo-1540946485063-a40da27545f8?auto=format&fit=crop&w=800&q=80" alt="Yacht 6">
-            <img src="Gallery1.jpeg" alt="Yacht 1">
-            <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=800&q=80" alt="Yacht 2">
-        </div>
-    </div>
 
     <section id="contact">
         <div style="text-align: center;">
