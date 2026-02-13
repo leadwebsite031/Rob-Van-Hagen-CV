@@ -38,7 +38,7 @@
 
         /* NAVIGATION & LOGO */
         nav {
-            height: 90px;
+            height: 100px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -58,9 +58,9 @@
             text-decoration: none;
         }
 
-        /* FIXED LOGO STYLING */
+        /* DEFINITIVE LOGO HARDCODE */
         .logo-img {
-            height: 75px; 
+            height: 80px; 
             width: auto;
             display: block;
             object-fit: contain;
@@ -111,7 +111,7 @@
         }
 
         /* GLASS PANELS */
-        section { padding: 100px 5% 40px; }
+        section { padding: 120px 5% 40px; }
 
         .glass-panel {
             background: var(--glass-navy);
@@ -239,7 +239,7 @@
             box-shadow: 0 0 40px rgba(197, 160, 89, 0.4);
         }
 
-        /* FOOTER & SOCIALS */
+        /* FOOTER */
         footer {
             padding: 60px 5% 40px;
             text-align: center;
@@ -247,47 +247,15 @@
             border-top: 1px solid var(--border);
         }
 
-        .social-links {
-            margin: 20px 0 30px;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-        }
-
-        .social-links a {
-            color: var(--accent-gold);
-            font-size: 1.5rem;
-            transition: 0.3s;
-            opacity: 0.8;
-        }
-
-        .social-links a:hover {
-            opacity: 1;
-            transform: translateY(-3px);
-        }
-
         @media (max-width: 900px) {
-            .nav-links {
-                display: none; 
-                position: absolute;
-                top: 90px; left: 0; width: 100%;
-                background: var(--glass-navy);
-                flex-direction: column;
-                padding: 40px 0;
-                text-align: center;
-                border-bottom: 1px solid var(--border);
-            }
-            .nav-links.active { display: flex; }
-            .nav-links a { margin: 15px 0; font-size: 1rem; margin-left: 0; }
+            .nav-links { display: none; }
             .mobile-toggle { display: block; }
-            .glass-panel { padding: 40px 20px; }
             .rolling-bar { height: 250px; }
             .rolling-track img { width: 320px; height: 250px; }
             @keyframes slideScroll {
                 0% { transform: translateX(0); }
                 100% { transform: translateX(calc(-320px * 6)); }
             }
-            .calc-input { font-size: 1.8rem; width: 100px; }
         }
     </style>
 </head>
@@ -297,15 +265,15 @@
 
     <nav>
         <a href="#" class="logo-group">
-            <img src="9e9b63d6-bbbf-4ad6-a08b-b908f80832aa.jfif" alt="Clear Water Yacht Solutions" class="logo-img">
+            <img src="9e9b63d6-bbbf-4ad6-a08b-b908f80832aa.jfif" alt="Clear Water Logo" class="logo-img">
             <div class="logo-text">CLEAR WATER<br><span style="font-size: 0.7rem; opacity: 0.7;">YACHT SOLUTIONS</span></div>
         </a>
         <div class="mobile-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#about" onclick="toggleMenu()">About us</a></li>
-            <li><a href="#maintenance" onclick="toggleMenu()">Maintenance & Packages</a></li>
-            <li><a href="#management" onclick="toggleMenu()">Skipping & Management</a></li>
-            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            <li><a href="#about">About us</a></li>
+            <li><a href="#maintenance">Maintenance & Packages</a></li>
+            <li><a href="#management">Skipping & Management</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
@@ -352,10 +320,6 @@
                     <h3>03. Hull Management</h3>
                     <p>Diver-assisted growth removal and running gear inspection to maintain fuel efficiency and speed.</p>
                 </div>
-                <div class="info-item">
-                    <h3>04. Interior Care</h3>
-                    <p>Climate control monitoring, upholstery protection, and high-end surface sanitation.</p>
-                </div>
             </div>
 
             <div class="calc-box">
@@ -368,22 +332,6 @@
         </div>
     </section>
 
-    <section id="management">
-        <div class="glass-panel">
-            <h2>Vessel Management</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <h3>Certified Skipping</h3>
-                    <p>Professional delivery captains for coastal and offshore transits. Full passage planning and weather routing included.</p>
-                </div>
-                <div class="info-item">
-                    <h3>Owner Liaison</h3>
-                    <p>We act as your technical representative for shipyard periods, surveys, and third-party contractor management.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <div class="rolling-bar">
         <div class="rolling-track">
             <img src="b5025056-99a7-4bb9-ae0d-2aa3785a9e65.jfif" alt="Vessel Image">
@@ -392,31 +340,16 @@
             <img src="e819aca1-5bd2-43fc-a7fe-72a1390c8635.jfif" alt="Vessel Image">
             <img src="10e80e1e-f4ff-4237-9d9d-928e290d04ff.jfif" alt="Vessel Image">
             <img src="b5025056-99a7-4bb9-ae0d-2aa3785a9e65.jfif" alt="Vessel Image">
-            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Vessel Image">
-            <img src="239e9ecd-31be-43ef-873f-0708a0a96a4a.jfif" alt="Vessel Image">
-            <img src="e819aca1-5bd2-43fc-a7fe-72a1390c8635.jfif" alt="Vessel Image">
-            <img src="10e80e1e-f4ff-4237-9d9d-928e290d04ff.jfif" alt="Vessel Image">
-            <img src="b5025056-99a7-4bb9-ae0d-2aa3785a9e65.jfif" alt="Vessel Image">
-            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Vessel Image">
         </div>
     </div>
 
     <section id="contact">
         <div style="text-align: center;">
-            <h2 style="margin-bottom: 20px;">Secure Your Vessel</h2>
-            <p style="max-width: 600px; margin: 0 auto 40px; opacity: 0.7;">Bespoke maintenance packages and management contracts discussed upon request.</p>
             <a href="https://wa.me/61434993224" class="btn-luxury">Initiate Command</a>
         </div>
     </section>
 
     <footer>
-        <div class="logo-text" style="margin-bottom: 10px;">CLEAR WATER YACHT SOLUTIONS</div>
-        
-        <div class="social-links">
-            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-
         <p style="font-size: 0.7rem; opacity: 0.4; letter-spacing: 2px;">© 2026 PRECISION MARITIME OVERSIGHT. ALL RIGHTS RESERVED.</p>
     </footer>
 
@@ -429,9 +362,7 @@
 
         function toggleMenu() {
             const nav = document.getElementById('navLinks');
-            if (window.innerWidth <= 900) {
-                nav.classList.toggle('active');
-            }
+            nav.classList.toggle('active');
         }
     </script>
 </body>
