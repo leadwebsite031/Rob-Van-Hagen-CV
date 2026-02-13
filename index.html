@@ -10,9 +10,9 @@
         :root {
             --royal-blue: #001a35;
             --accent-gold: #c5a059;
-            --glass-white: rgba(255, 255, 255, 0.03);
-            --glass-navy: rgba(0, 15, 35, 0.85);
-            --border: rgba(197, 160, 89, 0.25);
+            --glass-navy: rgba(0, 8, 20, 0.88);
+            --border: rgba(197, 160, 89, 0.3);
+            --white: #ffffff;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,30 +20,30 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--royal-blue);
-            color: #fff;
+            color: var(--white);
             overflow-x: hidden;
-            letter-spacing: 0.5px;
+            line-height: 1.6;
         }
 
-        /* FULL PAGE FIXED BACKGROUND */
+        /* BACKGROUND SYSTEM */
         .vessel-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100vh;
-            background: linear-gradient(rgba(0, 8, 20, 0.7), rgba(0, 8, 20, 0.7)), 
+            background: linear-gradient(rgba(0, 8, 20, 0.75), rgba(0, 8, 20, 0.75)), 
                         url('https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=2500&q=80');
             background-size: cover;
             background-position: center;
             z-index: -2;
         }
 
-        /* LUXURY NAV */
+        /* NAVIGATION & LOGO */
         nav {
-            height: 100px;
+            height: 90px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 5%;
-            background: rgba(0, 8, 20, 0.9);
+            background: rgba(0, 8, 20, 0.95);
             backdrop-filter: blur(20px);
             position: fixed;
             top: 0; width: 100%;
@@ -51,165 +51,212 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .logo {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            letter-spacing: 4px;
-            color: var(--accent-gold);
-            text-decoration: none;
-            font-weight: 700;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #f0f0f0;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-left: 40px;
-            transition: 0.4s;
-            opacity: 0.8;
-        }
-
-        .nav-links a:hover { color: var(--accent-gold); opacity: 1; }
-
-        /* CONTENT ARCHITECTURE */
-        section {
-            padding: 120px 5% 60px;
-            min-height: 80vh;
+        .logo-group {
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 15px;
+            text-decoration: none;
         }
 
-        .hero-section { height: 100vh; text-align: center; }
+        .logo-svg {
+            width: 45px;
+            height: 45px;
+            fill: var(--accent-gold);
+        }
+
+        .logo-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .nav-links { display: flex; list-style: none; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-left: 30px;
+            transition: 0.4s;
+            font-weight: 600;
+        }
+        .nav-links a:hover { color: var(--accent-gold); }
+
+        /* MOBILE MENU HAMBURGER */
+        .mobile-toggle { display: none; color: var(--accent-gold); font-size: 1.5rem; cursor: pointer; }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            letter-spacing: 15px;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        /* GLASS PANELS */
+        section { padding: 100px 5% 40px; }
 
         .glass-panel {
             background: var(--glass-navy);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            padding: 80px;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            padding: clamp(30px, 5vw, 80px);
             width: 100%;
-            max-width: 1200px;
+            max-width: 1300px;
+            margin: 0 auto;
             border: 1px solid var(--border);
-            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
-            border-radius: 4px;
+            border-radius: 2px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
         }
 
-        h1, h2 {
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--accent-gold);
+            margin-bottom: 50px;
+            text-align: center;
+            letter-spacing: 6px;
+        }
+
+        /* EXPANDED CONTENT GRID */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .info-item h3 {
             font-family: 'Cinzel', serif;
             color: var(--accent-gold);
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            letter-spacing: 8px;
-        }
-
-        h1 { font-size: 3.5rem; }
-        h2 { font-size: 2rem; text-align: center; }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .service-card {
+            font-size: 1rem;
+            margin-bottom: 15px;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 20px;
+            padding-bottom: 10px;
+            letter-spacing: 2px;
         }
 
-        .service-card h3 { color: var(--accent-gold); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 15px; }
+        .info-item p { font-size: 0.95rem; opacity: 0.8; font-weight: 300; }
 
         /* CALCULATOR */
-        .calc-wrapper {
-            background: rgba(255,255,255,0.02);
+        .calc-box {
+            background: rgba(197, 160, 89, 0.05);
             padding: 40px;
-            border: 1px solid var(--border);
+            border: 1px solid var(--accent-gold);
             text-align: center;
-            margin-top: 50px;
+            margin-top: 60px;
         }
 
         .calc-input {
             background: transparent;
             border: none;
             border-bottom: 2px solid var(--accent-gold);
-            color: #fff;
-            font-size: 2rem;
-            width: 120px;
+            color: var(--white);
+            font-size: 2.5rem;
+            width: 150px;
             text-align: center;
             outline: none;
             font-family: 'Cinzel', serif;
         }
 
-        .price-display {
-            font-size: 3rem;
+        .total-price {
+            font-size: clamp(2.5rem, 6vw, 4rem);
             color: var(--accent-gold);
             font-family: 'Cinzel', serif;
             margin: 20px 0;
         }
 
-        /* ROLLING IMAGE BAR (ABOVE CONTACT) */
-        .rolling-gallery {
+        /* ROLLING GALLERY BAR */
+        .rolling-bar {
             width: 100%;
-            height: 350px;
+            height: 300px;
             overflow: hidden;
-            position: relative;
+            background: #000;
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
-            background: #000;
+            position: relative;
         }
 
         .rolling-track {
             display: flex;
-            width: calc(300px * 10); /* Adjust based on image count */
-            animation: scroll 30s linear infinite;
+            width: calc(400px * 12);
+            animation: slideScroll 40s linear infinite;
         }
 
         .rolling-track img {
-            width: 450px;
-            height: 350px;
+            width: 400px;
+            height: 300px;
             object-fit: cover;
-            filter: grayscale(30%) brightness(70%);
+            filter: brightness(60%) contrast(110%);
             transition: 0.5s;
         }
 
-        .rolling-track img:hover { filter: grayscale(0%) brightness(100%); }
+        .rolling-track img:hover { filter: brightness(100%); }
 
-        @keyframes scroll {
+        @keyframes slideScroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-450px * 5)); }
+            100% { transform: translateX(calc(-400px * 6)); }
         }
 
-        /* CONTACT BUTTON */
-        .gold-btn {
-            padding: 20px 50px;
-            background: transparent;
+        /* LUXURY BUTTON */
+        .btn-luxury {
+            display: inline-block;
+            padding: 20px 60px;
             border: 1px solid var(--accent-gold);
             color: var(--accent-gold);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.5s;
             text-decoration: none;
-            display: inline-block;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            transition: 0.5s;
+            margin-top: 20px;
         }
 
-        .gold-btn:hover {
+        .btn-luxury:hover {
             background: var(--accent-gold);
             color: #000;
-            box-shadow: 0 0 30px rgba(197, 160, 89, 0.4);
+            box-shadow: 0 0 40px rgba(197, 160, 89, 0.4);
         }
 
         footer {
-            padding: 100px 5%;
+            padding: 80px 5%;
             text-align: center;
-            background: #000814;
+            background: #00050a;
+            border-top: 1px solid var(--border);
         }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .nav-links { display: none; }
+        /* MOBILE OPTIMIZATION */
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none; /* Hide for mobile JS menu */
+                position: absolute;
+                top: 90px; left: 0; width: 100%;
+                background: var(--glass-navy);
+                flex-direction: column;
+                padding: 40px 0;
+                text-align: center;
+                border-bottom: 1px solid var(--border);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { margin: 15px 0; font-size: 1rem; }
+            .mobile-toggle { display: block; }
+            .glass-panel { padding: 40px 20px; }
         }
     </style>
 </head>
@@ -218,60 +265,77 @@
     <div class="vessel-bg"></div>
 
     <nav>
-        <a href="#" class="logo">Clear Water</a>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#maintenance">Maintenance</a>
-            <a href="#management">Management</a>
-            <a href="#contact">Contact</a>
-        </div>
+        <a href="#" class="logo-group">
+            <svg class="logo-svg" viewBox="0 0 100 100">
+                <path d="M50 5 L90 85 L50 70 L10 85 Z" fill="none" stroke="currentColor" stroke-width="4"/>
+                <circle cx="50" cy="45" r="10" fill="currentColor"/>
+            </svg>
+            <div class="logo-text">CLEAR WATER<br><span style="font-size: 0.7rem; opacity: 0.7;">YACHT SOLUTIONS</span></div>
+        </a>
+        <div class="mobile-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#maintenance">Maintenance</a></li>
+            <li><a href="#management">Management</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
-    <section class="hero-section">
-        <div style="max-width: 800px;">
-            <p style="letter-spacing: 10px; color: var(--accent-gold); margin-bottom: 20px;">ESTABLISHED 2026</p>
-            <h1>Yacht Solutions</h1>
-            <p style="font-weight: 300; opacity: 0.7; font-size: 1.2rem;">Premier Vessel Care & Management for Discerning Owners.</p>
-        </div>
-    </section>
+    <div class="hero">
+        <p style="letter-spacing: 8px; font-size: 0.8rem; color: var(--accent-gold); margin-bottom: 20px;">ESTABLISHED IN MARITIME EXCELLENCE</p>
+        <h1>CLEAR WATER</h1>
+        <div style="width: 100px; height: 1px; background: var(--accent-gold); margin: 20px auto;"></div>
+        <p style="font-size: 1.2rem; font-weight: 300; letter-spacing: 4px; opacity: 0.8;">Vessel Oversight & Technical Solutions</p>
+    </div>
 
     <section id="about">
         <div class="glass-panel">
-            <h2>The Standard</h2>
-            <p style="text-align: center; font-size: 1.2rem; line-height: 2; opacity: 0.9;">
-                Clear Water Yacht Solutions is a bespoke maritime agency providing technical oversight, high-tier maintenance, and professional vessel skipping. We operate with a "Showroom Always" philosophy, ensuring your investment is perfectly maintained and ready for immediate departure.
-            </p>
+            <h2>The Fleet Standard</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>Technical Mastery</h3>
+                    <p>Our team provides deep-system mechanical audits and fluid analysis to ensure zero-fail ocean operations.</p>
+                </div>
+                <div class="info-item">
+                    <h3>Aesthetic Integrity</h3>
+                    <p>From gelcoat preservation to high-lustre stainless polishing, we maintain the "Showroom" condition of your asset.</p>
+                </div>
+                <div class="info-item">
+                    <h3>Strategic Logistics</h3>
+                    <p>We handle the complexities of vessel relocation, berth management, and seasonal transitions globally.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="maintenance">
         <div class="glass-panel">
-            <h2>Maintenance Packages</h2>
-            <div class="service-grid">
-                <div class="service-card">
-                    <h3>01. EXTERIOR CARE</h3>
-                    <p>Precision washdowns, stainless polishing, and teak restoration.</p>
+            <h2>Luxury Maintenance</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>01. Exterior Detail</h3>
+                    <p>Weekly washdowns, teak conditioning, and brightwork polishing to repel salt and oxidation.</p>
                 </div>
-                <div class="service-card">
-                    <h3>02. TECHNICAL AUDIT</h3>
-                    <p>Engine room oversight, fluid monitoring, and systems testing.</p>
+                <div class="info-item">
+                    <h3>02. Engine Room</h3>
+                    <p>Complete wipe-down, leak detection, and scheduled mechanical cycle testing for all sub-systems.</p>
                 </div>
-                <div class="service-card">
-                    <h3>03. DETAIL POLISHING</h3>
-                    <p>Premium gelcoat wax and ceramic protection applications.</p>
+                <div class="info-item">
+                    <h3>03. Hull Management</h3>
+                    <p>Diver-assisted growth removal and running gear inspection to maintain fuel efficiency and speed.</p>
                 </div>
-                <div class="service-card">
-                    <h3>04. HULL HYGIENE</h3>
-                    <p>Scheduled underwater cleaning and growth prevention.</p>
+                <div class="info-item">
+                    <h3>04. Interior Care</h3>
+                    <p>Climate control monitoring, upholstery protection, and high-end surface sanitation.</p>
                 </div>
             </div>
 
-            <div class="calc-wrapper">
-                <h3 style="letter-spacing: 3px; margin-bottom: 20px;">VESSEL RATE CALCULATOR</h3>
-                <input type="number" id="vesselLength" class="calc-input" placeholder="00" oninput="updatePrice()">
-                <span style="font-family: 'Cinzel'; color: var(--accent-gold);">FT</span>
-                <div class="price-display" id="totalPrice">$0</div>
-                <p style="opacity: 0.5; font-size: 0.8rem;">FIXED RATE: $4.00 / FOOT</p>
+            <div class="calc-box">
+                <h3 style="font-family: 'Cinzel'; letter-spacing: 3px; margin-bottom: 20px;">VALUATION CALCULATOR</h3>
+                <p style="font-size: 0.8rem; margin-bottom: 20px; opacity: 0.6;">ENTER VESSEL LENGTH (FEET)</p>
+                <input type="number" id="vLength" class="calc-input" placeholder="00" oninput="doCalc()">
+                <div class="total-price" id="resPrice">$0</div>
+                <p style="letter-spacing: 2px; font-size: 0.7rem; color: var(--accent-gold);">FLAT RATE: $4.00 USD PER FOOT</p>
             </div>
         </div>
     </section>
@@ -279,54 +343,54 @@
     <section id="management">
         <div class="glass-panel">
             <h2>Vessel Management</h2>
-            <div class="service-grid">
-                <div class="service-card">
-                    <h3>CAPTAINCY & SKIPPING</h3>
-                    <p>Professional yacht delivery, sea trials, and local/coastal relocation services by certified masters.</p>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>Certified Skipping</h3>
+                    <p>Professional delivery captains for coastal and offshore transits. Full passage planning and weather routing included.</p>
                 </div>
-                <div class="service-card">
-                    <h3>FULL OVERSIGHT</h3>
-                    <p>A comprehensive 365-day management plan including crew logistics and regulatory compliance.</p>
+                <div class="info-item">
+                    <h3>Owner Liaison</h3>
+                    <p>We act as your technical representative for shipyard periods, surveys, and third-party contractor management.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="rolling-gallery">
+    <div class="rolling-bar">
         <div class="rolling-track">
-            <img src="Gallery1.jpeg" alt="Yacht Detail 1">
-            <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=800&q=80" alt="Yacht Detail 2">
-            <img src="https://images.unsplash.com/photo-1540946485063-a40da27545f8?auto=format&fit=crop&w=800&q=80" alt="Yacht Detail 3">
-            <img src="https://images.unsplash.com/photo-1621275471769-e6aa344546d5?auto=format&fit=crop&w=800&q=80" alt="Yacht Detail 4">
-            <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=800&q=80" alt="Yacht Detail 5">
-            <img src="Gallery1.jpeg" alt="Yacht Detail 1">
-            <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=800&q=80" alt="Yacht Detail 2">
+            <img src="Gallery1.jpeg" alt="Yacht 1">
+            <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=800&q=80" alt="Yacht 2">
+            <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80" alt="Yacht 3">
+            <img src="https://images.unsplash.com/photo-1605281317010-fe5ffe798156?auto=format&fit=crop&w=800&q=80" alt="Yacht 4">
+            <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=800&q=80" alt="Yacht 5">
+            <img src="https://images.unsplash.com/photo-1540946485063-a40da27545f8?auto=format&fit=crop&w=800&q=80" alt="Yacht 6">
+            <img src="Gallery1.jpeg" alt="Yacht 1">
+            <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=800&q=80" alt="Yacht 2">
         </div>
     </div>
 
     <section id="contact">
-        <div class="glass-panel" style="text-align: center; background: transparent; border: none; box-shadow: none;">
-            <h2>Initiate Inquiry</h2>
-            <p style="margin-bottom: 40px; opacity: 0.8;">Maintenance schedules and management fees tailored to vessel requirements.</p>
-            <a href="https://wa.me/61434993224" class="gold-btn">Secure Your Vessel</a>
+        <div style="text-align: center;">
+            <h2 style="margin-bottom: 20px;">Secure Your Vessel</h2>
+            <p style="max-width: 600px; margin: 0 auto 40px; opacity: 0.7;">Bespoke maintenance packages and management contracts discussed upon request.</p>
+            <a href="https://wa.me/61434993224" class="btn-luxury">Initiate Command</a>
         </div>
     </section>
 
     <footer>
-        <p style="font-family: 'Cinzel'; color: var(--accent-gold); letter-spacing: 5px;">Clear Water Yacht Solutions</p>
-        <div style="margin: 20px 0; opacity: 0.5;">
-            <i class="fab fa-instagram" style="margin: 0 10px;"></i>
-            <i class="fab fa-facebook" style="margin: 0 10px;"></i>
-            <i class="fab fa-linkedin" style="margin: 0 10px;"></i>
-        </div>
-        <p style="font-size: 0.7rem; opacity: 0.3;">© 2026 CLEAR WATER MARITIME. ALL RIGHTS RESERVED.</p>
+        <div class="logo-text" style="margin-bottom: 30px;">CLEAR WATER YACHT SOLUTIONS</div>
+        <p style="font-size: 0.7rem; opacity: 0.4; letter-spacing: 2px;">© 2026 PRECISION MARITIME OVERSIGHT. ALL RIGHTS RESERVED.</p>
     </footer>
 
     <script>
-        function updatePrice() {
-            const length = document.getElementById('vesselLength').value;
-            const price = length * 4;
-            document.getElementById('totalPrice').innerText = '$' + price.toLocaleString();
+        function doCalc() {
+            const l = document.getElementById('vLength').value;
+            const p = l * 4;
+            document.getElementById('resPrice').innerText = '$' + p.toLocaleString();
+        }
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
         }
     </script>
 </body>
