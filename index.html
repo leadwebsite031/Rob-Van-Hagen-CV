@@ -144,27 +144,24 @@
             border-bottom: 1px solid var(--border);
             position: relative;
             margin: 60px 0;
-            backdrop-filter: blur(5px);
         }
 
         .rolling-track {
             display: flex;
-            width: calc(450px * 12); /* Double the set for seamless loop */
+            width: calc(450px * 12); 
             animation: slideScroll 35s linear infinite;
         }
-
-        .rolling-track:hover { animation-play-state: paused; }
 
         .rolling-track img {
             width: 450px;
             height: 350px;
             object-fit: cover;
-            filter: brightness(70%) sepia(20%);
+            filter: brightness(70%);
             transition: 0.5s;
             border-right: 1px solid var(--border);
+            /* Fallback in case image is missing: */
+            background: #000; 
         }
-
-        .rolling-track img:hover { filter: brightness(100%) sepia(0%); }
 
         @keyframes slideScroll {
             0% { transform: translateX(0); }
@@ -188,8 +185,6 @@
             padding-bottom: 10px;
             letter-spacing: 2px;
         }
-
-        .info-item p { font-size: 0.95rem; opacity: 0.8; font-weight: 300; }
 
         /* CALCULATOR */
         .calc-box {
@@ -219,7 +214,6 @@
             margin: 20px 0;
         }
 
-        /* LUXURY BUTTON */
         .btn-luxury {
             display: inline-block;
             padding: 20px 60px;
@@ -231,12 +225,6 @@
             text-transform: uppercase;
             transition: 0.5s;
             margin-top: 20px;
-        }
-
-        .btn-luxury:hover {
-            background: var(--accent-gold);
-            color: #000;
-            box-shadow: 0 0 40px rgba(197, 160, 89, 0.4);
         }
 
         footer {
@@ -260,13 +248,6 @@
             .nav-links.active { display: flex; }
             .nav-links a { margin: 15px 0; font-size: 1rem; margin-left: 0; }
             .mobile-toggle { display: block; }
-            .glass-panel { padding: 40px 20px; }
-            .rolling-bar { height: 250px; }
-            .rolling-track img { width: 320px; height: 250px; }
-            @keyframes slideScroll {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(calc(-320px * 6)); }
-            }
         }
     </style>
 </head>
@@ -304,63 +285,7 @@
             <div class="info-grid">
                 <div class="info-item">
                     <h3>Technical Mastery</h3>
-                    <p>Our team provides deep-system mechanical audits and fluid analysis to ensure zero-fail ocean operations.</p>
-                </div>
-                <div class="info-item">
-                    <h3>Aesthetic Integrity</h3>
-                    <p>From gelcoat preservation to high-lustre stainless polishing, we maintain the "Showroom" condition of your asset.</p>
-                </div>
-                <div class="info-item">
-                    <h3>Strategic Logistics</h3>
-                    <p>We handle the complexities of vessel relocation, berth management, and seasonal transitions globally.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="maintenance">
-        <div class="glass-panel">
-            <h2>Luxury Maintenance</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <h3>01. Exterior Detail</h3>
-                    <p>Weekly washdowns, teak conditioning, and brightwork polishing to repel salt and oxidation.</p>
-                </div>
-                <div class="info-item">
-                    <h3>02. Engine Room</h3>
-                    <p>Complete wipe-down, leak detection, and scheduled mechanical cycle testing for all sub-systems.</p>
-                </div>
-                <div class="info-item">
-                    <h3>03. Hull Management</h3>
-                    <p>Diver-assisted growth removal and running gear inspection to maintain fuel efficiency and speed.</p>
-                </div>
-                <div class="info-item">
-                    <h3>04. Interior Care</h3>
-                    <p>Climate control monitoring, upholstery protection, and high-end surface sanitation.</p>
-                </div>
-            </div>
-
-            <div class="calc-box">
-                <h3 style="font-family: 'Cinzel'; letter-spacing: 3px; margin-bottom: 20px;">VALUATION CALCULATOR</h3>
-                <p style="font-size: 0.8rem; margin-bottom: 20px; opacity: 0.6;">ENTER VESSEL LENGTH (FEET)</p>
-                <input type="number" id="vLength" class="calc-input" placeholder="00" oninput="doCalc()">
-                <div class="total-price" id="resPrice">$0</div>
-                <p style="letter-spacing: 2px; font-size: 0.7rem; color: var(--accent-gold);">FLAT RATE: $4.00 USD PER FOOT</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="management">
-        <div class="glass-panel">
-            <h2>Vessel Management</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <h3>Certified Skipping</h3>
-                    <p>Professional delivery captains for coastal and offshore transits. Full passage planning and weather routing included.</p>
-                </div>
-                <div class="info-item">
-                    <h3>Owner Liaison</h3>
-                    <p>We act as your technical representative for shipyard periods, surveys, and third-party contractor management.</p>
+                    <p>Deep-system mechanical audits and fluid analysis.</p>
                 </div>
             </div>
         </div>
@@ -368,25 +293,25 @@
 
     <div class="rolling-bar">
         <div class="rolling-track">
-            <img src="1.jfif" alt="Vessel 1">
-            <img src="2.jfif" alt="Vessel 2">
-            <img src="3.jfif" alt="Vessel 3">
-            <img src="4.jfif" alt="Vessel 4">
-            <img src="5.jfif" alt="Vessel 5">
-            <img src="6.jfif" alt="Vessel 6">
-            <img src="1.jfif" alt="Vessel 1">
-            <img src="2.jfif" alt="Vessel 2">
-            <img src="3.jfif" alt="Vessel 3">
-            <img src="4.jfif" alt="Vessel 4">
-            <img src="5.jfif" alt="Vessel 5">
-            <img src="6.jfif" alt="Vessel 6">
+            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Vessel Image">
+            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Vessel Image">
+            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Vessel Image">
+            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Vessel Image">
+            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Vessel Image">
+            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Vessel Image">
+            
+            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Vessel Image">
+            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Vessel Image">
+            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Vessel Image">
+            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Vessel Image">
+            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Vessel Image">
+            <img src="2ec1c3ae-a126-4e6e-b9b9-d5a0df221835.jfif" alt="Vessel Image">
         </div>
     </div>
 
     <section id="contact">
         <div style="text-align: center;">
             <h2 style="margin-bottom: 20px;">Secure Your Vessel</h2>
-            <p style="max-width: 600px; margin: 0 auto 40px; opacity: 0.7;">Bespoke maintenance packages and management contracts discussed upon request.</p>
             <a href="https://wa.me/61434993224" class="btn-luxury">Initiate Command</a>
         </div>
     </section>
@@ -397,14 +322,13 @@
     </footer>
 
     <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
         function doCalc() {
             const l = document.getElementById('vLength').value;
             const p = l * 4;
             document.getElementById('resPrice').innerText = '$' + p.toLocaleString();
-        }
-
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
         }
     </script>
 </body>
